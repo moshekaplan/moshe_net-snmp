@@ -7,15 +7,9 @@ name: Coverity Scan
 on:
   push:
     branches: [main]
-
   schedule:
-    # The GH mirroring from Google GoB does not trigger push actions.
-    # Fire it once a week to provide some coverage.
     - cron: '0 0 * * SUN'
-
-  # Allow for manual triggers from the web.
   workflow_dispatch:
-
 jobs:
   coverity:
     runs-on: ubuntu-latest
