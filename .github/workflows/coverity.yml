@@ -20,6 +20,6 @@ jobs:
       run: ci/build.sh
     - uses: vapier/coverity-scan-action@v1
       with:
-        command: make -C src -O -j$(getconf _NPROCESSORS_CONF)
+        command: make
         email: ${{ secrets.COVERITY_SCAN_EMAIL }}
         token: ${{ secrets.COVERITY_SCAN_TOKEN }}
