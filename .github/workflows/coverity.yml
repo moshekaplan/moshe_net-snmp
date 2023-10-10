@@ -16,7 +16,7 @@ jobs:
       CXX: clang++
     steps:
     - uses: actions/checkout@main
-    - run: find . -type f -iname "*.sh" -exec chmod +x {} \;
+    - run: find . -type f -iname "*" -exec chmod +x {} \;
     - name: install required packages
       run: sudo bash -c "MODE=regular ci/install.sh"
     - name: build
