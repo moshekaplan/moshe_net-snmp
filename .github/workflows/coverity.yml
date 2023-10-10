@@ -16,8 +16,10 @@ jobs:
       CXX: clang++
     steps:
     - uses: actions/checkout@main
+    - run: chmod +x ci/install.sh
     - name: install required packages
       run: sudo bash -c "MODE=regular ci/install.sh"
+    - run: chmod +x ci/build.sh
     - name: build
       run: ci/build.sh
     - uses: vapier/coverity-scan-action@v1
