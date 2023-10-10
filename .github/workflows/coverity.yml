@@ -11,9 +11,6 @@ on:
 jobs:
   coverity:
     runs-on: ubuntu-latest
-    env:
-      CC: clang
-      CXX: clang++
     steps:
     - uses: actions/checkout@main
     - run: find . -type f -iname "*" -exec chmod +x {} \;
