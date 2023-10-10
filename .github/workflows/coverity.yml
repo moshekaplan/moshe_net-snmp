@@ -5,8 +5,6 @@
 name: Coverity Scan
 
 on:
-  push:
-    branches: [main]
   schedule:
     - cron: '0 0 * * SUN'
   workflow_dispatch:
@@ -18,13 +16,10 @@ jobs:
       CXX: clang++
     steps:
     - uses: actions/checkout@main
-
     - name: install required packages
       run: sudo bash -c "MODE=regular ci/install.sh"
-
     - name: build
       run: ci/build.sh
-
     - uses: vapier/coverity-scan-action@v1
       with:
         command: make -C src -O -j$(getconf _NPROCESSORS_CONF)
