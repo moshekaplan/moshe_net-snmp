@@ -16,8 +16,8 @@ jobs:
     - run: find . -type f -iname "*" -exec chmod +x {} \;
     - name: install required packages
       run: sudo bash -c "MODE=regular ci/install.sh"
-    - name: build
-      run: ci/build.sh
+    - name: Configure
+      run: ci/net-snmp-configure master
     - uses: vapier/coverity-scan-action@v1
       with:
         command: make
