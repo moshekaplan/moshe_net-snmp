@@ -67,7 +67,7 @@ jobs:
     #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
     - name: Install Net-SNMP build dependencies
-      run: sudo ./ci/install.sh
+      run: chmod +x ./ci/install.sh && sudo ./ci/install.sh
 
     - run: |
         echo "Run, Build Application using script"
