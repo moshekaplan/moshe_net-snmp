@@ -18,8 +18,8 @@ on:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
   schedule:
-    - cron: '19 4 * * 0'
-  workflow_dispatch:
+    - cron: '35 8 * * 4'
+
 jobs:
   analyze:
     name: Analyze
@@ -38,7 +38,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'c-cpp']
+        language: [ 'c-cpp', 'python' ]
         # CodeQL supports [ 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift' ]
         # Use only 'java-kotlin' to analyze code written in Java, Kotlin or both
         # Use only 'javascript-typescript' to analyze code written in JavaScript, TypeScript or both
@@ -72,10 +72,10 @@ jobs:
     #   If the Autobuild fails above, remove it and uncomment the following three lines.
     #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
-     - run: |
-         echo "Run, Build Application using script"
-         ci/net-snmp-configure master CFLAGS=-fPIE
-         make
+    - run: |
+        echo "Run, Build Application using script"
+        ./ci/net-snmp-configure master CFLAGS=-fPIE
+        make
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
